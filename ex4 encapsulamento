@@ -1,0 +1,56 @@
+// Classe que representa uma pessoa com salário e cálculo do imposto de renda
+public class Pessoa {
+
+    
+    private double salario;
+
+    // Construtor 
+    public Pessoa(double salario) {
+        this.salario = salario;
+    }
+
+    
+    public double getSalario() {
+        return salario;
+    }
+
+    //  definir o salário
+    public void setSalario(double salario) {
+        if (salario >= 0) {
+            this.salario = salario;
+        } else {
+            System.out.println("Salário não pode ser negativo.");
+        }
+    }
+
+    // calcular o imposto de renda
+    public double calcularImposto() {
+        double imposto;
+        if (salario <= 1903.98) {
+            imposto = 0;
+        } else if (salario <= 2826.65) {
+            imposto = salario * 0.075 - 142.80;
+        } else if (salario <= 3751.05) {
+            imposto = salario * 0.15 - 354.80;
+        } else if (salario <= 4664.68) {
+            imposto = salario * 0.225 - 636.13;
+        } else {
+            imposto = salario * 0.275 - 869.36;
+        }
+        return imposto;
+    }
+
+    //  exibir informações sobre a pessoa
+    public void exibirInformacoes() {
+        System.out.printf("Salário: R$ %.2f\n", salario);
+        System.out.printf("Imposto de Renda: R$ %.2f\n", calcularImposto());
+    }
+
+    public static void main(String[] args) {
+        // crriação de um objeto Pessoa e definição do salário
+        Pessoa pessoa = new Pessoa(3500.00);
+
+      
+        pessoa.exibirInformacoes();
+    }
+}
